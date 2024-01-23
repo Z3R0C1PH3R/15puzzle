@@ -5,7 +5,7 @@ class Board:
         self.side = n
         self.board = [[1+j+n*i for j in range(n)] for i in range(n)]
         self.board[n-1][n-1] = "--"
-        self.x, self.y = 4,4
+        self.x, self.y = n-1,n-1
         self.solved = deepcopy(self.board)
         print(self.board)
     
@@ -31,7 +31,7 @@ class Board:
             self.y -= 1 
 
 
-    def shuffle(self, i:int=100):
+    def shuffle(self, i:int=500):
         for _ in range(i):
             self.move(randint(1,4))
         for _ in range(self.x, self.side):
@@ -45,15 +45,6 @@ class Board:
 if __name__ == "__main__":
     b = Board(5)
     print(b)
-    print(b.isSolved())
-    b.shuffle(5)
+    print()
+    b.shuffle()
     print(b)
-    print(b.isSolved())
-    moves = ["","d","a","s","w",]
-    while 1:
-        b.move(moves.index(input()))
-        # print('\033[3A'*b.side)
-        print(b)
-        if b.isSolved():
-            print("WOOHOO")
-            break
